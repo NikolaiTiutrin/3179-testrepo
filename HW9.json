@@ -1,0 +1,40 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "International arrivals in 2019",
+    "width": 800,
+    "height": 600,
+    "projection": {"type": "equalEarth"},
+    "data": {
+    "url": "https://raw.githubusercontent.com/KaneSec/vega_lite/main/3_choropleth_map/js/ne_110m_admin_0_countries.topojson",
+    "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
+    },
+    "transform": [
+        {
+       "lookup": "properties.NAME",
+       "from": {
+           "data": {
+           "url": "https://raw.githubusercontent.com/NikolaiTiutrin/3179-testrepo/main/combined.csv"
+           },
+       "key": "Country Name",
+    "fields": ["Arrivals"]
+    }
+    },
+    {"calculate": "datum.Arrivals + 0.1", "as": "Number of arrivals"}
+    ],
+    "mark": "geoshape",
+    "encoding": {
+    "color": {
+    "field": "Arrivals",
+    "type": "quantitative",
+    "scale": {
+    "type": "threshold",
+   "domain": [1, 1000000, 2500000, 10000000, 75000000, 150000000],
+  "range": ["lightgrey","#b2cfe9", "#77abd7", "#5092cc", "#3579b4", "#245179", "#242779"]
+    }
+    },
+    "tooltip": [
+    {"field": "properties.NAME", "type": "nominal", "title": "Country"},
+    {"field": "Arrivals", "type": "quantitative"}
+    ]
+    }
+   }
