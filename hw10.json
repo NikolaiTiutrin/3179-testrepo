@@ -1,83 +1,60 @@
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "vconcat":[{  "width": 500,
-    "height": 300,
-    "title": "UFO in USA in 2016",
-    "layer": [
-      {
-        "data": {
-          "url": "data/us-10m.json",
-          "format": {
-            "type": "topojson",
-            "feature": "states"
-          }
-        },
-        "projection": {
-          "type": "albersUsa"
-        },
-        "mark": {
-          "type": "geoshape",
-          "fill": "white",
-          "stroke": "grey"
-        }
-      },
-      {
-        "data": {
-          "url": "https://raw.githubusercontent.com/NikolaiTiutrin/3179-testrepo/main/UFOs_coordforUSA.csv"
-        },
-        "projection": {
-          "type": "albersUsa"
-        },
-          "mark": "circle",
-        "encoding": {
-          "longitude": {
-            "field": "lng",
-            "type": "quantitative"
-          },
-          "latitude": {
-            "field": "lat",
-            "type": "quantitative",
-               "scale": {"domain": {"param": "brush"}}
-          },
-          "size": {"value": 10},
-          "color": {"value": "#3579b4"},
-          "shape": {"field": "Shape"},
-          "tooltip": [
-            {"field": "State", "type": "nominal"},
-            {"field": "City", "type": "nominal"},
-            {"field": "Shape", "type": "nominal"},
-            {"field": "lat", "type": "quantitative"},
-            {"field": "lng", "type": "quantitative"}
-          ]
-        }
-      }
-    ]},
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/NikolaiTiutrin/3179-testrepo/main/UFOcleaned.csv"
+  },
+  "vconcat": [
     {
-      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+      "width": 500,
+      "height": 300,
+      "title": "UFO in USA in 2016",
+      "layer": [
+        {
+          "data": {
+            "url": "data/us-10m.json",
+            "format": {"type": "topojson", "feature": "states"}
+          },
+          "projection": {"type": "albersUsa"},
+          "mark": {"type": "geoshape", "fill": "white", "stroke": "grey"}
+        },
+        {
+          "transform": [{"filter": {"param": "brush"}}],
+          "projection": {"type": "albersUsa"},
+          "mark": "circle",
+          "encoding": {
+            "longitude": {"field": "lng", "type": "quantitative"},
+            "latitude": {"field": "lat", "type": "quantitative"},
+            "size": {"value": 10},
+            "color": {"value": "#3579b4"},
+            "shape": {"field": "Shape"},
+            "tooltip": [
+              {"field": "State", "type": "nominal"},
+              {"field": "City", "type": "nominal"},
+              {"field": "Shape", "type": "nominal"},
+              {"field": "lat", "type": "quantitative"},
+              {"field": "lng", "type": "quantitative"}
+            ]
+          }
+        }
+      ]
+    },
+    {
       "width": 500,
       "height": 200,
       "title": "Recorded cases",
-          "data": {
-            "url": "https://raw.githubusercontent.com/NikolaiTiutrin/3179-testrepo/main/UFOcleaned.csv"
-          },
-            "mark": "point",
-            "params": [{
-              "name": "brush", 
-              "select": {"type": "interval", "encodings": ["x"]}
-            }],
-          "encoding": {
-            "x": {
-              "timeUnit":"monthdate",
-              "field": "Date",
-              "title": ""
-            },
-           "y":{
-             "aggregate":"count",
-             "type": "quantitative",
-             "title": "Sightings recorded"
-           },
-            "color": {"value": "#3579b4"}
-          }
+      "mark": "point",
+      "params": [
+        {"name": "brush", "select": {"type": "interval", "encodings": ["x"]}}
+      ],
+      "encoding": {
+        "x": {"field": "Date", "type": "temporal", "title": ""},
+        "y": {
+          "aggregate": "count",
+          "type": "quantitative",
+          "title": "Sightings recorded"
+        },
+        "color": {"value": "#3579b4"}
+      }
     }
-    ]
-  }
+  ]
+}
