@@ -10,7 +10,8 @@
     {"filter": "datum.date1 != null"}
   ],
   "mark": {"type": "rect"},
-  "width": "container",
+  "width": 400,
+  "height": 500,
   "encoding": {
     "x": {
       "field": "date1",
