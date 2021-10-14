@@ -1,0 +1,30 @@
+html, body {
+    background-color: #e6f7ff;
+    margin: 0;
+    padding: 0;
+}
+header {
+    background-color: #e6f7ff;
+    margin: 20px 50px;
+    text-align: center;
+}
+section {
+    padding: 10px;
+}
+footer {
+    padding: 10px;
+}
+div {
+    background-color: #e6f7ff;
+    margin: auto;
+    float: inline-start;
+}
+h3 {
+    font-family: 'Londrina Solid', cursive;
+}
+h1{   
+    font-family: 'Rampart One', cursive;
+}
+p{
+    margin: 20px;
+}
