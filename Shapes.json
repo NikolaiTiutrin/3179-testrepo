@@ -1,0 +1,80 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Arrivals of aliens by state",
+  "width": 400,
+  "height": 500,
+      "data": {
+        "url": "https://raw.githubusercontent.com/NikolaiTiutrin/3179-testrepo/main/UFOs_coordforUSA.csv"
+      },
+      "params":[
+        {
+          "name": "Shape_selection",
+          "bind": {
+            "input": "select",
+            "options":[
+              null,
+              "Changing",
+              "Chevron",
+              "Cigar",
+              "Circle",
+              "Cone",
+              "Cross",
+              "Cylinder",
+              "Diamond",
+              "Disk",
+              "Egg",
+              "Fireball",
+              "Flash",
+              "Formation",
+              "Light", 
+              "Other",
+              "Oval",
+              "Rectangle",
+              "Sphere", 
+              "Teardrop",
+              "Triangle",
+              "Unknown"
+            ],
+            "labels": [
+              "Show all",
+              "Changing",
+              "Chevron",
+              "Cigar",
+              "Circle",
+              "Cone",
+              "Cross",
+              "Cylinder",
+              "Diamond",
+              "Disk",
+              "Egg",
+              "Fireball",
+              "Flash",
+              "Formation",
+              "Light", 
+              "Other",
+              "Oval",
+              "Rectangle",
+              "Sphere", 
+              "Teardrop",
+              "Triangle",
+              "Unknown"
+            ],
+            "name": "Shape selection"
+          }
+        }
+      ],
+      "transform": [
+        {"filter":"Shape_selection == null || datum.Shape == Shape_selection"}
+      ],
+      "mark":"bar",
+      "encoding": {
+        "y": {
+          "field":"State",
+          "type": "nominal"
+        },
+        "x":{
+          "aggregate": "count", "type": "quantitative" 
+        },
+        "color":{"field": "Shape", "type": "nominal"}
+      }
+}
