@@ -1,0 +1,58 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/NikolaiTiutrin/3179-testrepo/main/UFOtimechanged.csv"
+  },
+  "transform": [
+    {"calculate": "timeParse(datum['Date2'], '%m/%d/%Y')", "as": "date1"},
+    {"calculate": "timeParse(datum['Time'], '%H:%M')", "as": "time1"},
+    {"filter": "datum.date1 != null"}
+  ],
+  "mark": {"type": "rect"},
+  "width": 400,
+  "height": 400,
+  "encoding": {
+    "x": {
+      "field": "date1",
+      "timeUnit": "month",
+      "type": "ordinal",
+      "title": "Month",
+      "axis": {"grid": true, "tickBand": "extent" },
+      "title":null
+    },
+    "y": {
+      "field": "time1",
+      "timeUnit": "hours",
+      "type": "ordinal",
+      "title": "Time",
+      "sort": "descending",
+      "axis": {"grid": true, "tickBand": "extent"},
+      "title":null
+    },
+    "color": {
+      "aggregate": "count",
+      "type": "quantitative",
+      "scale":{
+        "type":"threshold",
+        "domain": [5, 25, 50, 80, 130],
+        "scheme":"yellowgreenblue"
+      }
+    },
+    "tooltip": [
+      {
+        "field": "date1",
+        "timeUnit": "month",
+        "type": "ordinal",
+        "title": "Month"
+      },
+      {
+        "field": "time1",
+        "timeUnit": "hours",
+        "type": "ordinal",
+        "title": "Time"
+      },
+      {"field": "__count", "title": "Count"}
+    ]
+  },
+  "config": {"view": {"stroke": "transparent"}}
+}

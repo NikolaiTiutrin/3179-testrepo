@@ -1,0 +1,72 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Most seen shapes by each state",
+  "width": 400,
+  "height": 500,
+      "data": {
+        "url": "https://raw.githubusercontent.com/NikolaiTiutrin/3179-testrepo/main/newfile.csv"
+      },
+      "params":[
+        {
+          "name": "Shape_selection",
+          "bind": {
+            "input": "select",
+            "options":[
+              null,
+             "Circle",
+              "Fireball", 
+              "Sphere",
+              "Triangle",
+              "Light",
+              "Other"   
+            ],
+            "labels": [
+              "Show all",              
+              "Circle",
+              "Fireball", 
+              "Sphere",
+              "Triangle",
+              "Light",
+              "Other"    
+            ],
+            "name": "Shape selection"
+          }
+        }
+      ],
+      "transform": [
+        {"filter":"Shape_selection == null || datum.Shape == Shape_selection"}
+      ],
+      "encoding":{"y": {
+          "field":"State",
+          "type": "nominal",
+          "sort":{"op":"count", "order": "descending"},
+          "axis": {
+            "labelFontSize": 10,
+            "title":null
+           }
+        },
+        "x":{
+          "aggregate": "count", "type": "quantitative" 
+        }},
+      "layer":[
+        {"mark":"bar",
+      "encoding": {
+        "color":{"field": "Shape", "type": "nominal",
+        "scale": {"scheme":"tableau20"}},
+        "tooltip":[{"field": "Shape", "type": "nominal"},
+          {"field": "State", "type": "nominal"}
+        ]
+      }},
+        {"mark": {
+      "type": "text",
+      "align": "right",
+      "size":10,
+      "dx":16
+    },
+    "encoding": {
+      "text": {"aggregate": "count", "type": "quantitative"},
+      "color": {"value": "black"}
+    }}
+      ]
+      
+}

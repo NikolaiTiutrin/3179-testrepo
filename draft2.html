@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+
+  <script src="hw10.js"></script>
+  <link rel="stylesheet" href="assignment.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@300&family=Rampart+One&display=swap"
+    rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css"
+    integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5" crossorigin="anonymous">
+  <title>UFO in the United States in 2016 </title>
+  <script>
+    alert("Attention! This page took a lot of effort and time to build. HD please")
+  </script>
+</head>
+
+<body>
+  <header>
+    <p>UFO in the United States in 2016</p>
+  </header>
+  <main>
+    <div class="blockY">
+      <p> &nbsp;&nbsp; Americans are obsessed with aliens. The concept of “flying saucers” has captured the American imagination
+        since the 1940s and 1950s. This has been connected to their ideas about life on the Moon, canals on the Red
+        planet and Martian civilisations. America’s fixation with flying saucers, aliens and UFOs is not limited to just films and literature. In
+        September 2019, some 2 million people joined a Facebook event called <span class='important_text'>“Storm Area 51, They Can’t Stop All of
+          Us”</span>. Area 51 is a heavily guarded Air Force facility in Southern Nevada that has been the subject of several
+        conspiracy theories because of the secrecy it is shrouded in. Many Americans believe the government hid
+        bodies of aliens and UFOs here, and held meetings with extraterrestrials (Gill, 2021).
+<br> Moreover, The US government recently relesed an unclassified report of various types of unidintidied aerial phenomena (UAPs) - known in popular culture as unidentified flying objects (UFOs).
+The Pentagon’s preliminary assessment is based on the review of 144 UAP reports involving observations made by military aviators between 2004 and 2021.
+ <span class='important_text'>Of the 144 reports, the task force could only determine an explanation for one.</span>  The rest remain unexplained (Stieb & Danner, 2021). This spiked a new interest in UFOs. 
+  </p>
+    </div>
+
+    <div class="blockYM">
+      <h1>Map of UFO sightings</h>
+    </div>
+    
+    <div class="blockW">
+      <div class="blockW__graphic">
+        <div id="map"></div>
+      </div>
+      <div class="blockW__description">
+        <div class="blockW__descriptionItem">
+               <p>
+                &nbsp;&nbsp;The dot map shows all the location of the sightings recorded in 2016. We can see that the most sightings were at the east and west coasts.
+There are numerous reasons for that. One of them is bigger population in the areas. This factor is analised by other visualisations below.
+<br>&nbsp;&nbsp;Despite lack of concrete evidence to suggest extra-terrestrial explanations for aerial sightings, <span class='blue_text'>One-sixth</span> of Americans claimed they had <span class='blue_text'>personally witnessed something they
+  thought was a UFO </span>, while <span class='blue_text'>40,000 Americans bought into alien protection insurance</span>, which offers customers monetary relief should a loved one get abducted by extra-terrestrial life.
+<br> &nbsp;&nbsp;A poll in 1991 suggests that around 4 million Americans believe they've been abducted by aliens.
+            
+</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="blockYM">
+      <h1>Time of UFO sightings</h1>
+    </div>
+
+    <div class="blockB">
+      <div class="blockB__description">
+        <div class="blockB__descriptionItem">
+          <p> &nbsp;&nbsp;The heatmap shows the number of sightings per every hour by month in 2016.
+          <br> <br> &nbsp;&nbsp;Almost three-quarters of all UFO sighting reports in the United States occur <span class='important_text'>between 4 p.m. and midnight</span> and tend to <span class='blue_text'>peak between 9 and 10 p.m.</span> 
+          <br> <br>  &nbsp;&nbsp;Defence and intelligence analysts lack sufficient data to determine the nature of mysterious flying objects observed by military pilots.
+          Since 2004, there have been 144 reports UAPs with 143 still undetermined, but with no clear indications any of extra-terrestrial explanation for the sightings. 
+          However, the U.S. military has claimed to not rule out the possibility entirely. There are five potential explanatory categories: airborne clutter, natural atmospheric 
+          phenomena, US government or American industry developmental programs, foreign adversary systems and an "other" category.</p>
+          
+        </div>
+      </div>
+      <div class="blockB__graphic">
+        <div id="heatmap"></div>
+      </div>
+    </div>
+
+    <div class="blockYM">
+      <h1>Population & sightings</h1>
+    </div>
+    <div class="blockY">
+      <p> &nbsp;&nbsp;Of the states with the highest number of UFO sightings, <span class='light_blue'>California</span>, <span class='orange'>Florida</span>, <span class='blue_text'>Arizona</span> and Washington</span> respectively, 
+        <span class='light_blue'>California</span>, <span class='orange'>Florida</span> and <span class='lightorange'>New York</span> <span class="important_text"> are the top four largest U.S. state populations</span> . This could partially explain the greater number of UAF sightings in those states, due to a greater audience witnessing the sight.
+        In fact, the scatter plot on the right side displays the relationship between stae population and the number of sightings recorded in the stete in 2016.
+        Indeed, <span class='red_text'>R-squared</span> equals <span class='red_text'>0.82</span>  implying a strong positive correlation between the variables.
+       <br> </p>
+    </div>
+
+    <div class="blockW">
+      <div class="blockW__graphic">
+        <div id="bubbleplot"> </div>
+      </div>
+      <div class="blockW__graphic">
+        <div class="blockB__graphic">
+          <div id="scatterplot"></div>
+        </div>
+      </div>
+    </div>
+    <div class="blockYM">
+      <h1>Shapes of UFOs</h1>
+    </div>
+    <div class="blockY">
+      <p> &nbsp;&nbsp;According to a poll Gallup in 2019, nearly <span class='important_text'>two-thirds</span> of Americans believed that the US government had more
+        knowledge on UFOs than they claim to disclose, while <span class='important_text'>one-third</span> believed that some apparent UFOs were actual
+        sightings of alien spacecraft. Yet <span class='important_text'>60%</span> also believed that these sightings could be explained by human
+        activity or natural phenomenon. For instance, a sighting of moving white lights by dozens of residents in Texas in January 2008, show that even where there is an explanation for sighting 
+       (in this case the Air Force confirmed F-16s had been flying in that proximity at the time), non-extra-terrestrial explanations will not always be believed.</p>
+    </div>
+    <div class="blockW">
+      <div class="blockW__graphic">
+        <div id="barchart"></div>
+      </div>
+      <div class="blockW__graphic">
+        <div id="cities"></div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p> 
+      &nbsp;&nbsp;This page presents data on UFO signtings in 2016 in the United States. This year 
+      has the most complete information on UFO sightings available to public. We do not draw any conclusions but simply present the information
+      We leave it to the readers to decide whether any of the sightings are real or not.</p>
+  </footer>
+</body>
+
+</html>

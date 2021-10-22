@@ -1,0 +1,50 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/NikolaiTiutrin/3179-testrepo/main/sleectedstatespopulation.csv"
+  },
+  "width": 490,
+  "height": 400,
+  "title": "Most visited states",
+  "mark": {
+    "type": "circle",
+    "opacity": 0.8,
+    "stroke": "grey",
+    "strokeWidth": 1
+  },
+  "encoding": {
+    "x": {
+   "field": "Date", "type": "temporal", "title": "",
+   "axis": {
+     "labelFontSize": 9
+   } 
+    },
+    "y": {"field": "State", 
+    "type": "nominal", 
+    "axis": {
+      "labelFontSize": 9,
+      "title":null
+     },
+    "sort":"count"
+    },
+    "size": {
+      "aggregate": "count",
+      "type": "quantitative",
+      "scale": {
+        "type":"threshold", "domain":[5, 15, 25, 40],
+        "range":[25, 100,500, 1000, 2000]
+        },
+      "title": "Recorded cases",
+      "legend": {"clipHeight": 30,
+      "orient":"right"}
+    },
+    "color": {"field": "State", "type": "nominal", "legend": null,
+    "scale":{"scheme": "tableau20"}},
+    "tooltip":[
+      {"field":"State", "type": "nominal"},
+      {"field": "__count", "title": "Count"},
+      {"field": "Date", "type": "temporal"}
+    ]
+  }
+ 
+}

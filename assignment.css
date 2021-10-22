@@ -1,30 +1,136 @@
-html, body {
-    background-color: #e6f7ff;
-    margin: 0;
-    padding: 0;
+body{
+    background-color: #d3d3d3;
+    margin:0;
+    padding:0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
 }
-header {
-    background-color: #e6f7ff;
-    margin: 20px 50px;
+h2{
     text-align: center;
+    margin: 0;
 }
-section {
-    padding: 10px;
-}
-footer {
-    padding: 10px;
-}
-div {
-    background-color: #e6f7ff;
-    margin: auto;
-    float: inline-start;
-}
-h3 {
-    font-family: 'Londrina Solid', cursive;
-}
-h1{   
+h1{
+    text-align: center;
     font-family: 'Rampart One', cursive;
+    font-size: 250%;
+    margin: 0;
+    color: black;
+}
+main{
+    margin:0 5% 0 5%;
+}
+
+header p{
+    font-family: 'Rampart One', cursive;
+    font-size: 250%;
+    font-weight: bold;
+    text-align: center;
+    margin: 0;
+    color:black;
+}
+header{
+    text-align: center;
+    padding:  40px 0 40px 0;
+    margin:0 5% 0 5%;
+    background-color: rgb(252, 250, 250) (0,0,0,0.5);
+}
+.blockW{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+   
+    
+}
+.blockW .blockW__description{
+    background-color: white;
+    padding: 15px;
+}
+.blockW .blockW__descriptionItem{
+    text-align: left;
+    color:white;
+    padding:15px;
+    
+}
+.blockW .blockW__graphic{
+    text-align: center;
+
+    background-color: white;
+}
+.blockB{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    
+  
+}
+.blockB .blockB__description{
+    background-color: white;
+    padding: 15px;
+}
+.blockB .blockB__descriptionItem{
+    text-align: right;
+    color:white;
+    padding:15px;
+}
+.blockB .blockB__graphic{
+    text-align: center;
+    background-color: white;
+
+}
+.blockX{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin:10px 0 10px 0;
+}
+.blockX .blockX__graphic{
+    text-align: center;
+    background-color: white;
+}
+.blockY{
+    padding: 5px;
+    color:black;
+    margin: 0; 
+    text-align: left;
+    background-color: rgb(255, 255, 255);
+    color:black;
+    padding:15px;
+}
+.blockYM{
+    text-align: center;
+    padding: 0px;
+    color:black;
+    margin: 0; 
+}
+footer{
+    background-color: white;
+    margin:5px 5% 5px 5%;
+    padding:15px;
+}
+.important_text{
+    font-weight: bold;
+}
+.red_text{
+    font-weight: bold;
+    color: red;
+}
+.blue_text{
+    font-weight: bold;
+    color: blue;
+}
+.light_blue{
+    color: rgb(58, 175, 248);
+    font-weight: bold;
+}
+.orange{
+    color: rgb(190, 53, 3);
+    font-weight: bold;
+}
+.lightorange{
+    color: orange;
+    font-weight: bold;
 }
 p{
-    margin: 20px;
+    text-align: left;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.4cm;
+    color: black;
 }

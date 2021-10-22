@@ -1,0 +1,100 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/NikolaiTiutrin/3179-testrepo/main/sightings%20included.csv"
+  },
+  "params": [
+    {
+      "name": "Population_above",
+      "value":0,
+      "bind": {
+        "input": "range",
+        "min": 0,
+        "max": 40000000,
+        "step": 1000000,
+        "name": "Population above: "
+      }
+    }
+  ],
+  "transform": [
+    {"filter": "datum.Population >= Population_above"}
+  ],
+  "width": 398,
+  "height":400,
+  "layer": [
+    {
+      "mark": {
+        "type": "point",
+        "filled": true
+      },
+      "encoding": {
+        "x": {
+          "field": "Population",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "Sightings",
+          "type": "quantitative"
+        }, "tooltip":[{
+          "field":"State", "type": "nominal"
+        },
+        {"field":"Sightings", "type": "quantitative"},
+        {"field":"Population", "type": "quantitative"}
+        ]
+      }
+    },
+    {
+      "mark": {
+ "type": "text",
+ "font":"Helvetica Neue",
+ "fontWeight":"normal",
+ "fontSize": 11,
+ "fontStyle": "normal",
+  "align": "right",
+  "baseline":"line-top"
+ },
+ "encoding": { "x": {
+          "field": "Population",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "Sightings",
+          "type": "quantitative"
+        },"text": {"field": "State", "type": "nominal"},
+ "color": {"value": "black"},
+ "opacity": {
+ "condition": {
+ "test": "datum['State'] == 'California' || datum['State'] == 'Florida' || datum['State'] == 'New York' || datum['State'] == 'Texas' || datum['State'] == 'Washington' || datum['State'] == 'Pennsylvania'",
+ "value": 1
+ },
+ "value": 0
+ },
+"tooltip": [
+ { "field":"State", "type": "nominal"  },
+        {"field":"Sightings", "type": "quantitative"},
+        {"field":"Population", "type": "quantitative"}
+ ]
+ }
+    },
+    {
+      "transform": [
+        {
+          "regression": "Sightings",
+          "on": "Population",
+          "params": true
+        },
+        {"calculate": "'R²: '+format(datum.rSquared, '.2f')", "as": "R2"}
+      ],
+      "mark": {
+        "type": "text",
+        "color": "firebrick",
+        "x": "width",
+        "align": "right",
+        "y": -5
+      },
+      "encoding": {
+        "text": {"type": "nominal", "field": "R2"}
+      }
+    }
+  ]
+}
