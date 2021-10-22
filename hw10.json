@@ -1,0 +1,111 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/NikolaiTiutrin/3179-testrepo/main/newfile.csv"
+  },
+   "params":[
+        {
+          "name": "Shape_selection",
+          "bind": {
+            "input": "select",
+            "options":[
+              null,
+             "Circle",
+              "Fireball", 
+              "Sphere",
+              "Triangle",
+              "Light",
+              "Other"   
+            ],
+            "labels": [
+              "Show all",              
+              "Circle",
+              "Fireball", 
+              "Sphere",
+              "Triangle",
+              "Light",
+              "Other"    
+            ],
+            "name": "Shape selection"
+          }
+        }
+      ],
+      "transform": [
+        {"filter":"Shape_selection == null || datum.Shape == Shape_selection"}
+      ],
+  "vconcat": [
+    {
+      "width": 500,
+      "height": 300,
+      "layer": [
+        {
+          "data": {
+            "url": "https://raw.githubusercontent.com/vega/vega/master/docs/data/us-10m.json",
+            "format": {"type": "topojson", "feature": "states"}
+          },
+          "projection": {"type": "albersUsa"},
+          "mark": {"type": "geoshape", "fill": "white", "stroke": "grey"}
+        },
+        
+        {
+          "transform": [{"filter": {"param": "brush"}}],
+          "projection": {"type": "albersUsa"},
+          "mark": "circle",
+          "encoding": {
+            "longitude": {"field": "lng", "type": "quantitative"},
+            "latitude": {"field": "lat", "type": "quantitative"},
+            "size": {"value": 10},
+            "color": {"value": " #668cff"},
+                "tooltip": [
+              {"field": "State", "type": "nominal"},
+              {"field": "City", "type": "nominal"},
+              {"field": "Shape", "type": "nominal"}
+            ]
+          }
+        },
+        {
+      "transform": [
+        {
+          "regression": "Sightings",
+          "on": "Population",
+          "params": true
+        },
+        {"calculate": "'*1 dot = 1 sighting'", "as": "R2"}
+      ],
+      "mark": {
+        "type": "text",
+        "color": "black",
+        "x": "width",
+        "align": "right",
+        "y": -5
+      },
+      "encoding": {
+        "text": {"type": "nominal", "field": "R2"}
+      }
+    }
+      ]
+    },
+    {
+      "width": 500,
+      "height": 100,
+      "title": "Recorded cases",
+      "mark": "circle",
+      "params": [
+        {"name": "brush", "select": {"type": "interval", "encodings": ["x"]}}
+      ],
+      "encoding": {
+        "x": {"field": "Date", "type": "temporal", "title": "Select interval", "axis": {
+          "labelFontSize": 9
+        } },
+        "y": {
+          "aggregate": "count",
+          "type": "quantitative",
+          "title": null
+        },
+        "color": {"value": " #668cff"},
+        "tooltip": [{"aggregate":"count", "type": "quantitative"},
+        {"field": "Date", "type": "temporal"}]
+      }
+    }
+  ]
+}
